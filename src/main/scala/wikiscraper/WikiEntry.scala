@@ -13,7 +13,7 @@ package wikiscraper
 case class WikiEntry(title: String,
                      entryId: String,
                      mainDesc: String,
-                     mainImage: String,
+                     mainImage: Option[String],
                      outlinks: List[String],
                      content: String,
                      otherImages: List[String])
