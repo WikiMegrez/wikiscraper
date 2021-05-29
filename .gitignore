@@ -4,4 +4,8 @@
 .bsp/
 .idea/
 project/target/
+project/project/
+project/.bloop/
+.bloop/
+.metals/
 target/
