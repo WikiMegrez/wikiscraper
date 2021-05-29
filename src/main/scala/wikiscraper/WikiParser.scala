@@ -21,7 +21,7 @@ object WikiParser {
         else
           url
       if u.startsWith("https://en.wikipedia.org/wiki/") then
-        u.split('/').lastOption
+        u.split('/').lastOption flatMap { location => location.split('#').headOption }
       else
         None
     }
@@ -31,12 +31,12 @@ object WikiParser {
       case None => Left(InvalidUrl(url))
     }
 
-    def getTitle = doc.select("h1 #firstHeading").asScala.toList match {
+    def getTitle = doc.select("h1#firstHeading").asScala.toList match {
       case x :: _ => Right(x.text())
       case Nil => Left(BadDocument("first heading not found"))
     }
 
-    def getContent = doc.select("div .mw-parser-output").asScala.toList match {
+    def getContent = doc.select("div.mw-parser-output").asScala.toList match {
       case Nil => Left(BadDocument("content div not found"))
       case div :: _ =>
         val children = div.children().asScala

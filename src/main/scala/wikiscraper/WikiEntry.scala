@@ -16,6 +16,9 @@ case class WikiEntry(title: String,
                      mainImage: Option[String],
                      outlinks: List[String],
                      content: String,
-                     otherImages: List[String])
+                     otherImages: List[String]) {
+  override def toString: String =
+    s"WikiEntry\ntitle = $title\nid = $entryId\nmainDesc = $mainDesc\nmainImage = $mainImage\noutlinks = $outlinks"
+}
 
 object WikiEntry
