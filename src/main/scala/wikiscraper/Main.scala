@@ -1,15 +1,12 @@
 package wikiscraper
-import org.jsoup._
-import nodes._
 
-@main def run() = {
+@main def run(iterations: Int) = {
   println("Welcome to wikiscraper")
-  val url = "https://en.wikipedia.org/wiki/Scala_(programming_language)"
-  val doc: Document = Jsoup.connect(url).get()
-  println(doc)
+  val names = List("Scala_(programming_language)", "Beijing_University_of_Posts_and_Telecommunications")
+  val config = WikiScraper.Config("output/", 500)
+  val scraper = new WikiScraper(names, Nil)
+  given WikiScraper.Config = config
 
-  println(doc.select("h1#firstHeading"))
-
-  val res = WikiParser.parseWikiEntry(url, doc)
-  println(res)
+  for _ <- 1 to iterations do scraper.iterate
 }
+
