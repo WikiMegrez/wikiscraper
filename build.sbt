@@ -10,6 +10,9 @@ lazy val root = project
 
     libraryDependencies ++= Seq(
       "org.jsoup" % "jsoup" % "1.8.3",
-      "com.novocode" % "junit-interface" % "0.11" % "test"
+      "io.circe" %% "circe-core" % "0.14.0-M6",
+      "io.circe" %% "circe-generic" % "0.14.0-M6",
+      "io.circe" %% "circe-parser" % "0.14.0-M6",
+      "com.novocode" % "junit-interface" % "0.11" % "test",
     )
   )
