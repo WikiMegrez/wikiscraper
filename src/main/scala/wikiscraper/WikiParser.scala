@@ -77,9 +77,9 @@ object WikiParser {
       entryId = name,
       mainDesc = content._1,
       mainImage = mainImage,
-      outlinks = getOutlinks,
+      outlinks = getOutlinks.distinct,
       content = content._2,
-      otherImages = otherImages
+      otherImages = otherImages.distinct
     )
   }
 }
