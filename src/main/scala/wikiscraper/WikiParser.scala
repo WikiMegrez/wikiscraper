@@ -8,6 +8,7 @@ import org.jsoup.nodes._
  */
 object WikiParser {
   class ParseError(val msg: String)
+  case class ConnectError(errorMsg: String) extends ParseError(s"Connection error: $errorMsg")
   case class InvalidUrl(url: String) extends ParseError(s"Invalid url: $url")
   case class BadDocument(reason: String) extends ParseError(s"Bad document: $reason")
 
